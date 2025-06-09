@@ -27,6 +27,14 @@
     },
     "android": {
       "package": "com.qoneqt.boltexponativewind"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "08dfbb1b-775d-4f55-ae11-44a9955828b1"
+      }
     }
   }
 }
