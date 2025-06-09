@@ -50,3 +50,7 @@ This project is **open-source** under the [MIT License](LICENSE).
 
 ---
 🚀 **Start building your music app today!**
+
+command for the android production build
+cd android
+./gradlew assembleRelease
