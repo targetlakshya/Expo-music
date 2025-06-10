@@ -21,22 +21,22 @@ echo "Local :  $LOCAL"
 echo "Remote: $REMOTE"
 
 if [ "$LOCAL" = "$REMOTE" ]; then
-    echo "✅ Up-to-date"
+    echo "Up-to-date"
 else
     AHEAD_BEHIND=$(git rev-list --left-right --count $BRANCH...origin/$BRANCH)
     AHEAD=$(echo "$AHEAD_BEHIND" | awk '{print $1}')
     BEHIND=$(echo "$AHEAD_BEHIND" | awk '{print $2}')
 
     if [ "$AHEAD" -gt 0 ] && [ "$BEHIND" -eq 0 ]; then
-        echo "📤 Local is ahead by $AHEAD commit(s). Pushing..."
+        echo "Local is ahead by $AHEAD commit(s). Pushing..."
         git push origin $BRANCH
 
-        echo "🚀 Triggering production build..."
+        echo "Triggering production build..."
         eval "$BUILD_SCRIPT"
     elif [ "$BEHIND" -gt 0 ] && [ "$AHEAD" -eq 0 ]; then
-        echo "📥 Local is behind by $BEHIND commit(s). Pulling..."
+        echo "Local is behind by $BEHIND commit(s). Pulling..."
         git pull origin $BRANCH
     else
-        echo "⚠️  Local and remote have diverged. Manual action required."
+        echo "Local and remote have diverged. Manual action required."
     fi
 fi
